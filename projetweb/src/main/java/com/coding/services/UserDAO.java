@@ -14,14 +14,14 @@ import com.coding.models.User;
 public class UserDAO {
 
     public List<User> getUsers() throws SQLException {        
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM users;";
             try (Statement st = co.createStatement()) {
                 try (ResultSet rs = st.executeQuery(sql)) {
                     List<User> list = new ArrayList<>();
                     while (rs.next()) {
                         User u = new User();
-                        u.setId(rs.getInt("id"));
+                        u.setId(rs.getInt("idUser"));
                         u.setPassword(rs.getString("password"));
                         u.setUsername(rs.getString("username"));
                         list.add(u);
@@ -33,14 +33,14 @@ public class UserDAO {
     }
 
     public User getUserById(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM users where id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);
                 try (ResultSet rs = st.executeQuery()) {
                     if (rs.next()) {
                         User u = new User();
-                        u.setId(rs.getInt("id"));
+                        u.setId(rs.getInt("idUser"));
                         u.setPassword(rs.getString("password"));
                         u.setUsername(rs.getString("username"));
                         return u;
@@ -52,7 +52,7 @@ public class UserDAO {
     }
 
     public void add(User user) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "INSERT INTO users (username, password) VALUES(?, ?);";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setString(1, user.getUsername());
@@ -63,7 +63,7 @@ public class UserDAO {
     }
 
     public void update(int id, User user) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "UPDATE users SET username=? , password=? , WHERE id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setString(1, user.getUsername());
@@ -75,7 +75,7 @@ public class UserDAO {
     }
 
     public void delete(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "DELETE FROM users WHERE id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);

@@ -13,7 +13,7 @@ import com.coding.models.Recipe;
 public class RecipeDAO {
     
     public List<Recipe> getRecipes() throws SQLException {        
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM recipes;";
             try (Statement st = co.createStatement()) {
                 try (ResultSet rs = st.executeQuery(sql)) {
@@ -38,7 +38,7 @@ public class RecipeDAO {
     }
 
     public Recipe getRecipeById(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM recipes where idRecipe=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);
@@ -63,7 +63,7 @@ public class RecipeDAO {
     }
 
     public void addRecipe(Recipe recipe) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "INSERT INTO recipes (idUser, idRecipe, date, ingredients, title, content, type, time, servings) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, recipe.getIdUser());
@@ -81,7 +81,7 @@ public class RecipeDAO {
     }
 
     public void updateRecipe(int id, Recipe recipe) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "UPDATE recipes SET idUser=? , idRecipe=? , date=? , ingredients=? , title=? , content=? , type=? , time=? , servings=? , WHERE idRecipe=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, recipe.getIdUser());
@@ -100,7 +100,7 @@ public class RecipeDAO {
     }
 
     public void deleteRecipe(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "DELETE FROM recipes WHERE id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);

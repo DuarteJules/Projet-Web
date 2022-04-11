@@ -21,7 +21,7 @@ public class RatingsDAO {
     //Marche peut etre pas tout à fait celui là parce que c'est jnouné dans la bdd à voir
 
     public List<Ratings> getRatings() throws SQLException {        
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM ratings;";
             try (Statement st = co.createStatement()) {
                 try (ResultSet rs = st.executeQuery(sql)) {
@@ -42,7 +42,7 @@ public class RatingsDAO {
     }
 
     public Ratings getRatingById(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "SELECT * FROM ratings where id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);
@@ -63,7 +63,7 @@ public class RatingsDAO {
     }
 
     public void addRating(Ratings rat) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "INSERT INTO ratings (idUser, idRecipe, rating, comment, favorite) VALUES(?, ?, ?, ?, ?);";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, rat.getIdUser());
@@ -77,7 +77,7 @@ public class RatingsDAO {
     }
 
     public void update(int id, Ratings rat) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "UPDATE users SET idUser=? , idRecipe=? , rating=?, comment=?, favorite=? , WHERE id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, rat.getIdUser());
@@ -91,7 +91,7 @@ public class RatingsDAO {
         }
     }
     public void delete(int id) throws SQLException {
-        try (Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet-web", "root", "toor")) {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
             String sql = "DELETE FROM ratings WHERE id=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);
