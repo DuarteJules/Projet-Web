@@ -5,8 +5,9 @@ const Header = () => (
         <nav id="navbar">
             <ul id="linkContainer">
                 <li><Link to="/recette">Recettes</Link></li>
-                <li><Link to="/login">Se Connecter</Link></li>
                 <li><Link to="/homecook">Cuisiner avec mon frigo</Link></li>
+                <li><Link to="/login">Se Connecter</Link></li>
+                <li><Link to="/signup">S'inscrire</Link></li>
             </ul>
         </nav>
     </header>
