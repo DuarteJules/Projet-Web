@@ -11,33 +11,19 @@ import Signup from "./views/Signup";
 
 //Gère les chemins pour aller de pages en pages sans refresh
 const App = () => (
-    <Router>
-        <Layout>
-            <Switch>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/recette" element={<Recette/>}/>
-                <Route path="*" element={<Error/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/homecook" element={<HomeCook/>}/>
-            </Switch>
-        </Layout>
-    </Router>
+<Router>
+    <Layout>
+        <Switch>
+            <Route path="/home" element={<Home/>}/>
+            <Route path="/recette" element={<Recette />}/>
+            <Route path="*" element={<Error/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/homecook" element={<HomeCook/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+        </Switch>
+    </Layout>
+</Router>
 )
 
-    return (
-            <Router>
-                <Layout>
-                    <Switch>
-                        <Route path="/home" element={<Home/>}/>
-                        <Route path="/recette" element={<Recette />}/>
-                        <Route path="*" element={<Error/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/homecook" element={<HomeCook/>}/>
-                        <Route path="/signup" element={<Signup/>}/>
-                    </Switch>
-                </Layout>
-            </Router>
-    )
-}
 
 export default App;
