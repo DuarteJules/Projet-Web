@@ -2,6 +2,7 @@
 @import "./views/example.css";
 @import "./components/searchbar.css";
 @import "./views/recette.css";
+@import "./views/login.css";
 
 @import "components/header.css";
 
