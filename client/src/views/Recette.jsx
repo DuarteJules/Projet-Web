@@ -44,7 +44,7 @@ const Recette = () => {
         <>
             <div className="recipeCard">
                 <div className="titleRecipe"><h1>{Recipe.title}</h1></div>
-                <div className="infoRecipe">
+                <div className="infoRecipes">
                     <div className="timeRecipe">Temps nécessaire à la préparation : {Recipe.time} min</div>
                     <div className="servingRecipe">Préparation pour : {Recipe.servings} personnes</div>
                 </div>

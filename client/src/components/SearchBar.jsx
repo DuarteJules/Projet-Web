@@ -66,8 +66,8 @@ const [ingredients, setIngredients] = useState('');
         />
 
 <div className="recettesContainer">
-            {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
-                <div className="RecetteCardContainer">
+            {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette, key = 0) => (
+                <div className="RecetteCardContainer" key={key++}>
                     <div className="imageContainer">
                         <img src={recette.image} />
                     </div>
