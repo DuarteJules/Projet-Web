@@ -1,70 +1,8 @@
 @import "./components/example.css";
 @import "./views/example.css";
 @import "./components/searchbar.css";
+@import "./views/recette.css"
 
 
 /* ^importer tout les AUTRES fichiers css dans celui ci, ce fichier est le SEUL à être loadé dans le index.js */
 
-/* 
-main{
-    display:flex;
-    justify-content: center;
-}
-.recipeCard{
-    display:flex;
-    flex-direction: column;
-    width: 90%;
-    border-radius: 24px;
-    background: #f0f0f0;
-    box-shadow:  -19px 19px 38px #b6b6b6,
-                19px -19px 38px #ffffff;
-}
-.image{
-    max-width: fit-content;
-}
-.rick{
-    max-width: 328px;
-}
-.titleRecipe{
-    display: flex;
-    justify-content: center;
-}
-
-.infoRecipe{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.elementContainer{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.recipeText{
-    width: 60%;
-}
-
-.recipeText p{
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    text-align: justify;
-}
-
-.ingredientRecipe{
-    display: flex;
-    justify-content:center;
-    width: 30%;
-}
-
-.dateRecipe{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.dateRecipe p{
-    margin-right: 20px;
-} */
