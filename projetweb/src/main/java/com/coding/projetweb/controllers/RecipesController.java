@@ -28,7 +28,7 @@ public class RecipesController {
     }
 
     @GetMapping("/{id}")
-    public Recipe getRecipeById(@PathVariable(value="idRecipe") int recipeId) throws SQLException{
+    public Recipe getRecipeById(@PathVariable(value="id") int recipeId) throws SQLException{
         return dao.getRecipeById(recipeId);
     }
 
