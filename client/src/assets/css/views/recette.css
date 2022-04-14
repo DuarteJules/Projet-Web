@@ -1,7 +1,7 @@
-main{
+/* main{
     display: flex;
     justify-content: center;
-}
+} */
 .recipeCard{
     display:flex;
     flex-direction: column;
@@ -9,7 +9,7 @@ main{
     border-radius: 24px;
     background: #f0f0f0;
     box-shadow:  -19px 19px 38px #b6b6b6,
-                 19px -19px 38px #ffffff;
+                19px -19px 38px #ffffff;
 }
 .image{
     max-width: fit-content;

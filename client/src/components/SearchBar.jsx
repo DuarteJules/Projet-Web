@@ -39,7 +39,7 @@ function SearchBar() {
 const [ingredients, setIngredients] = useState('');
 
   // the search result
-    const [foundRecipes, setFoundRecipes] = useState({RECETTES});
+    const [foundRecipes, setFoundRecipes] = useState(RECETTES);
 
     const filter = (e) => {
         const keyword = e.target.value;
@@ -70,11 +70,11 @@ const [ingredients, setIngredients] = useState('');
 
 <div className="recettesContainer">
             {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
-                <div className="RecetteCardContainer">
+                <div className="RecetteCardContainer" key={recette.id}>
                     <div className="imageContainer">
                         <img src={recette.image} />
                     </div>
-                    <div className="infoRecipe">
+                    <div className="infoRecipeCard">
                         <p>{recette.name}</p>
                         <p>préparation : {recette.temps} minutes</p>
                         <p>ingrédietns : {recette.ingredients}</p>
