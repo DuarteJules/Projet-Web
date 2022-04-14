@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-function Header  (){
+import currentUser from "../functions/user";
 
 // if(loggedin == false){
     return(
@@ -33,6 +34,7 @@ function Header  (){
 //     loggedin = false;
 // };
 
+    const [display, setDisplay] = useState(false);
 
     }
 

@@ -12,9 +12,16 @@ public class Recipe {
     private String type;
     private int time;
     private int servings;
+    private String tag;
 
     public int getIdRecipe() {
         return idRecipe;
+    }
+    public String getTag() {
+        return tag;
+    }
+    public void setTag(String tag) {
+        this.tag = tag;
     }
     public void setIdRecipe(int idRecipe) {
         this.idRecipe = idRecipe;
