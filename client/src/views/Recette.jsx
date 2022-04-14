@@ -37,7 +37,7 @@ const Recette = () => {
     //     })
     // )
 
-    console.log(Recipe);
+    // console.log(Recipe);
     // console.log(Recipe.title);
 
     return (

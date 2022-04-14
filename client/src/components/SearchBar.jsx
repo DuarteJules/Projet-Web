@@ -1,21 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
+import instance from "../functions/axios";
 
 
+// const getRecipe = async () => {
+//     const response = await instance.get('/recipes')
+//     .then(res => {return res.data})
+//     .catch((err) => console.log(err));
+
+//     return response;
+// }
+
+// const RECETTES = () =>{
+// const [Recipe, setRecipe] = useState({});
+// const loading = useRef(true);
 
 
-const RECETTES = [
+// useEffect(() => {
+//     if(loading.current) {
+//         (async () => {
+//             const Recipes = await getRecipe();
+//             setRecipe(preVal => preVal = Recipes);
+//             loading.current = false;
+//         })();
+//         }
+//     }, []);
+//     return Recipe;
+// }
+    const RECETTES=[
     // écrire les recettes au format => { id: 1, name: 'purée', temps: 32, ingredients:'pomme de terre, sel, eau' }
     {id:1, name: 'Sardoche', temps: 50, ingredients: 'sel , eau, fun', servings:20 , type:"vegan", image:require("../assets/img/rick.jpg")},
     {id:2, name: 'Pipi', temps: 50, ingredients: 'pipi , eau, fun', servings:2 , type:"connard", image:require('../assets/img/rick.jpg')},
     {id:3, name: 'Luciano', temps: 50, ingredients: 'portugal , eau, fun', servings:4012 , type:"truc", image:require("../assets/img/rick.jpg")}
     ];
+    // const [RECETTES, getRecipe] 
 
 function SearchBar() {
   // the value of the search field 
 const [ingredients, setIngredients] = useState('');
 
   // the search result
-    const [foundRecipes, setFoundRecipes] = useState(RECETTES);
+    const [foundRecipes, setFoundRecipes] = useState({RECETTES});
 
     const filter = (e) => {
         const keyword = e.target.value;
