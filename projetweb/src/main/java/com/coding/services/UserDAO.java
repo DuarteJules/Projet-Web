@@ -85,4 +85,24 @@ public class UserDAO {
             }
         }
     }
+
+    public User getUserByInfo(String username, String password) throws SQLException {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
+            String sql = "SELECT * FROM users where username=? AND password=?;";
+            try (PreparedStatement st = co.prepareStatement(sql)) {
+                st.setString(1, username);
+                st.setString(2, password);
+                try (ResultSet rs = st.executeQuery()) {
+                    if (rs.next()) {
+                        User u = new User();
+                        u.setIdUser(rs.getInt("idUser"));
+                        u.setPassword(rs.getString("password"));
+                        u.setUsername(rs.getString("username"));
+                        return u;
+                    }
+                    return null;
+                }
+            }
+        }
+    }
 }
