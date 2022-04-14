@@ -1,40 +1,54 @@
+import { useEffect, useRef, useState } from "react";
 import rick from "../assets/img/rick.jpg";
-// import React, { useState } from 'react';
-import React, { useState } from "react";
+import instance from "../functions/axios";
 
-const RECETTES =[
-    //exporter les recettes depuis la base de données ici (au meme format qu'un json (voir searchbar pour exemple))
-    {id:1, name: 'Sardoche', temps: 50, ingredients: 'sel , eau, fun', servings:20 , type:"vegan", image:require("../assets/img/rick.jpg")},
-    {id:2, name: 'Pipi', temps: 50, ingredients: 'pipi , eau, fun', servings:2 , type:"connard", image:require('../assets/img/rick.jpg')},
-    {id:3, name: 'Luciano', temps: 50, ingredients: 'portugal , eau, fun', servings:4012 , type:"truc", image:require("../assets/img/rick.jpg")}
-];
+const getUser = async () => {
+    const response = await instance.get('/users')
+    .then(res => {return res.data})
+    .catch((err) => console.log(err));
 
-function Recette(){
-    const [allRecipes] = useState(RECETTES);
-    
-    return(
-        <div className="recettesContainer">
-            {allRecipes && allRecipes.length > 0 ? (allRecipes.map((recette) => (
-                <div className="RecetteContainer">
-                    <div className="imageContainer">
-                        <img src={recette.image} />
-                    </div>
-                    <div className="infoRecipe">
-                        <p>{recette.name}</p>
-                        <p>préparation : {recette.temps} minutes</p>
-                        <p>ingrédietns : {recette.ingredients}</p>
-                        <p>pour {recette.servings} personnes</p>
-                        <p>type : {recette.type}</p>
-                    </div>
-
-                </div>
-        ))
-            ):(
-                <h1 className="recipeEmpty">Il n'y a pas de recettes pour l'instant</h1>
-            )}
-        </div>
-    );
+    return response;
 }
 
+const Recette = () => {
+    const [user, setUser] = useState({});
+    const loading = useRef(true);
+
+    useEffect(() => {
+        if(loading.current) {
+            (async () => {
+                const users = await getUser();
+                setUser(preVal => preVal = users);
+                loading.current = false;
+            })();
+        }
+    }, []);
+
+    const testRender = (users, key = 0) => (
+        users.map(user => {
+            return (
+                <div key={key++}>
+                    <span>{user.username}</span>
+                    <br/>
+                    <span>{user.password}</span>
+                    <br/>
+                </div>
+            )
+        })
+    )
+
+    return (
+        <>
+            <h1>Ma page Recette</h1>
+            <div className="recipeCard">
+                <div className="elementContainer">
+                    <div className="image"><img src={rick} alt="rick astley" className="rick"></img></div>
+                    <div className="recipeText"> <p>goudron gravier et emincé de ciment</p> </div>
+                    {!loading.current && testRender(user)}
+                </div>
+            </div>
+        </>
+    )
+}
 
 export default Recette;

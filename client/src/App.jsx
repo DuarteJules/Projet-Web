@@ -6,27 +6,25 @@ import HomeCook from "./views/HomeCook";
 import Login from "./views/Login";
 import Layout from "./components/Layout";
 import Signup from "./views/Signup";
+import Profil from "./views/Profil";
 
 
 
 //Gère les chemins pour aller de pages en pages sans refresh
-const App = () => {
-
-    return (
-            <Router>
-                <Layout>
-                    <Switch>
-                        <Route path="/home" element={<Home/>}/>
-                        <Route path="/recette" element={<Recette />}/>
-                        <Route path="*" element={<Error/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/homecook" element={<HomeCook/>}/>
-                        <Route path="/signup" element={<Signup/>}/>
-                        <Route path="/profil" element={<Signup/>}/>
-                    </Switch>
-                </Layout>
-            </Router>
-    )
-}
+const App = () => (
+<Router>
+    <Layout>
+        <Switch>
+            <Route path="/home" element={<Home/>}/>
+            <Route path="/recette" element={<Recette />}/>
+            <Route path="*" element={<Error/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/homecook" element={<HomeCook/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/profil" element={<Profil/>}/>
+        </Switch>
+    </Layout>
+</Router>
+);
 
 export default App;
