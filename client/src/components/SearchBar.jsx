@@ -7,6 +7,7 @@ const getRecipe = async () => {
     .then(res => {return res.data})
     .catch((err) => console.log(err));
 
+    console.log(response);
     return response;
 }
     // const RECETTES=[

@@ -1,4 +1,4 @@
-import { findUsers } from "../functions/login";
+import { getUsers } from "../functions/login";
 import { useState } from "react";
 
 
@@ -31,33 +31,39 @@ const App = () => {
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const database = [
+
+
+    const database = [getUsers()];
+
+    /* const database = [
         {
+            idUser:"1",
           username: "user1",
           password: "pass1"
         },
         {
+            idUser:"2",
           username: "user2",
           password: "pass2"
         }
-      ];
+      ]; */
 
     const errors = {
         uname: "invalid username",
         pass: "invalid password"
     };
-    console.log(findUsers());
+
     console.log(database);
 
     const handleSubmit = (event) => {
         //Prevent page reload
         event.preventDefault();
-    
+      
         var { uname, pass } = document.forms[0];
-    
+      
         // Find user login info
-        const userData = findUsers().find((user) => user.username === uname.value);
-    
+        const userData = database.find(user => user.username === uname.value);
+        console.log(userData);
         // Compare user info
         if (userData) {
           if (userData.password !== pass.value) {
@@ -70,7 +76,7 @@ const App = () => {
           // Username not found
           setErrorMessages({ name: "uname", message: errors.uname });
         }
-    };
+      };
 
     const renderErrorMessage = (name) =>
     name === errorMessages.name && (

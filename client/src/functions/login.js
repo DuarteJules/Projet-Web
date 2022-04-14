@@ -1,18 +1,10 @@
 import instance from "./axios";
 
-export async function findUsers(){
-    const arrayFiltered=[];
-    const i = 0;
+export const getUsers = async () => {
+    const response = await instance.get('/users')
+    .then(res => {return res.data})
+    .catch((err) => console.log(err));
 
-    try {
-        const response = await instance.get('/users');
-        //console.log(response);
-        response.forEach(element => {
-            arrayFiltered = element;
-        });
-        return arrayFiltered;
-    } catch (error) {
-        //console.error(error);
-    }
-
+    console.log(response);
+    return response;
 }
