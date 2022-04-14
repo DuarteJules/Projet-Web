@@ -14,8 +14,8 @@ const Signup =()=>(
                 <label htmlFor="psw-repeat">Répétez votre mot de passe</label>
                 <input type="text" placeholder="répétez votre mot de passe" name="psw-repeat" required/>
 
-                <div class="btnContainer">
-                    <button type="submit" class="signupBtn">S'inscrire</button>
+                <div className="btnContainer">
+                    <button type="submit" className="signupBtn">S'inscrire</button>
                 </div>
 
         </div>
