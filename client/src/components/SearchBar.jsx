@@ -4,7 +4,7 @@ import instance from "../functions/axios";
 
 const getRecipe = async () => {
     const response = await instance.get('/recipes')
-    .then(res => {return res.data})
+    .then(res => {return res.data},)
     .catch((err) => console.log(err));
 
     return response;
@@ -17,30 +17,43 @@ const getRecipe = async () => {
     // ];
     // // const [RECETTES, getRecipe] 
 
+
 function SearchBar() {
     const [Recipe, setRecipe] = useState({});
+
+    // the value of the search field 
+    const [ingredients, setIngredients] = useState('');
+    // the search result
+    const [foundRecipes, setFoundRecipes] = useState(Recipe);
     const loading = useRef(true);
-    
-    
-    useEffect(() => {
+    // const [Recipe, setRecipe] = useState({});
+
+    // const loading = useRef(true);
+
+    // const [foundRecipes, setFoundRecipes] = useState(Recipe);
+    // const [ingredients, setIngredients] = useState('');
+
+
+    useEffect(() => { 
         if(loading.current) {
             (async () => {
                 const Recipes = await getRecipe();
                 setRecipe(preVal => preVal = Recipes);
                 loading.current = false;
             })();
-            }
+        }
         }, []);
+//         const [Recipe, setRecipe] = useState({});
 
-  // the value of the search field 
-const [ingredients, setIngredients] = useState('');
+//   // the value of the search field 
+// const [ingredients, setIngredients] = useState('');
 
-  // the search result
-    const [foundRecipes, setFoundRecipes] = useState(Recipe);
+//   // the search result
+//     const [foundRecipes, setFoundRecipes] = useState(Recipe);
+    console.log(Recipe);
 
     const filter = (e) => {
         const keyword = e.target.value;
-
         if (keyword !== '') {
         const results = Recipe.filter((recette) => {
         return recette.ingredients.toLowerCase().includes(keyword.toLowerCase());
@@ -49,12 +62,11 @@ const [ingredients, setIngredients] = useState('');
         setFoundRecipes(results);
         } else {
         setFoundRecipes(Recipe);
-        // If the text field is empty, show all users
+        // If the text field is empty, show all recipes
         }
-
         setIngredients(keyword);
     };
-
+    console.log(foundRecipes.length);
     return (
     <div className="container">
         <input
@@ -66,17 +78,17 @@ const [ingredients, setIngredients] = useState('');
         />
 
 <div className="recettesContainer">
-            {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette, key = 0) => (
-                <div className="RecetteCardContainer" key={key++}>
+            {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
+                <div className="RecetteCardContainer" key={recette.idRecipe} >
                     <div className="imageContainer">
                         <img src={recette.image} />
                     </div>
                     <div className="infoRecipeCard">
                         <p>{recette.title}</p>
                         <p>préparation : {recette.time} minutes</p>
-                        <p>ingrédietns : {recette.ingredients}</p>
+                        <p>ingrédients : {recette.ingredients}</p>
                         <p>pour {recette.servings} personnes</p>
-                        <p>type : {recette.tag}</p>
+                        <p>type : {recette.type}</p>
                         <p>posté le {recette.date}</p>
                     </div>
 
@@ -89,5 +101,6 @@ const [ingredients, setIngredients] = useState('');
         </div>
         );
 }
+
 
 export default SearchBar;
