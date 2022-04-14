@@ -1,46 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import currentUser from "../functions/user";
+import currentUser, { changeUser } from "../functions/user";
+import Login from "../views/Login";
 
-const Header = () => {
 
-    const [display, setDisplay] = useState(false);
-
-    const displayLi = () => {
-        if(currentUser !== null){
-            //display Login et Signup
-
-        }else{
-            //display Se Deconnecter
-
-        }
-    }
-    if(currentUser != null){
-        return(
+const Header = ({user, setUser}) => {
+    return(
         <header id="HeaderContainer">
+            <div id={"logo"}>
+                    J'ai la <br /> recette
+            </div>
             <nav id="navbar">
                 <ul id="linkContainer">
-                    <li><Link to="/recette">Recettes</Link></li>
-                    <li><Link to="/homecook">Cuisiner avec mon frigo</Link></li>
-                    <li><a>Se deconnecter</a></li>
+                    <p><Link to="/home">Les Recettes</Link></p>
+                    {!user && 
+                    <>
+                    <p><Link to="/login">Se Connecter</Link></p>
+                    <p><Link to="/signup">S'inscrire</Link></p>
+                    </>
+                    }
+                    {user && 
+                    <>
+                    <li><Link to="/profil">Mon Profil</Link></li>
+                    <li onClick={()=>{setUser(false)}}><Link to="/home">Logout</Link></li>
+                    </>
+                    }
                 </ul>
             </nav>
         </header>
-        );
-    }else{
-        return(
-            <header id="HeaderContainer">
-            <nav id="navbar">
-                <ul id="linkContainer">
-                    <li><Link to="/recette">Recettes</Link></li>
-                    <li><Link to="/homecook">Cuisiner avec mon frigo</Link></li>
-                    <li><Link to="/login">Se Connecter</Link></li>
-                    <li><Link to="/signup">S'inscrire</Link></li>
-                </ul>
-            </nav>
-        </header>
-        )
-    }
+            )
+
 };
+
+
+    // const [display, setDisplay] = useState(false);
+
+
 
 export default Header;

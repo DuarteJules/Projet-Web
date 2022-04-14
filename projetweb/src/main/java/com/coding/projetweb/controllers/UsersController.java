@@ -32,6 +32,10 @@ public class UsersController {
     public User getUserById(@PathVariable(value="id") int userId) throws SQLException{
         return dao.getUserById(userId);
     }
+    @GetMapping("/{username}/{password}")
+    public User getUserByCredentials(@PathVariable(value="username") String username, @PathVariable(value="password") String password) throws SQLException{
+        return dao.getUserByCredentials(username, password);
+    }
 
     @GetMapping("/?{username}&{password}")
     public User getUserByInfo(@PathVariable (value="username") String username, @PathVariable(value="password") String password)throws SQLException{

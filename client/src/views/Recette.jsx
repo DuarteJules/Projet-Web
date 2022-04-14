@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import rick from "../assets/img/rick.jpg";
 import instance from "../functions/axios";
 
 const getRecipe = async () => {
