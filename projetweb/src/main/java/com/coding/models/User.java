@@ -1,17 +1,18 @@
 package com.coding.models;
 
 public class User {
-    private int id;
+    private int idUser;
     private String username;
     private String password;
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+
     public String getUsername() {
         return username;
+    }
+    public int getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
     public void setUsername(String username) {
         this.username = username;

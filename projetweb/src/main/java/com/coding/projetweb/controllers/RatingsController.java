@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/ratings")
 public class RatingsController {
-    @RequestMapping("/ratings")
-public class UsersController {
     private RatingsDAO dao = new RatingsDAO();
-
 
     @GetMapping("")
     public List<Ratings> getRatings() throws SQLException{
@@ -48,4 +46,4 @@ public class UsersController {
         dao.delete(userId);
     }
 }
-}
+

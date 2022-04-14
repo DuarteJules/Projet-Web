@@ -1,8 +1,9 @@
 @import "./components/example.css";
 @import "./views/example.css";
 @import "./components/searchbar.css";
-@import "./views/recette.css"
+@import "./views/recette.css";
 
+@import "components/header.css";
 
 /* ^importer tout les AUTRES fichiers css dans celui ci, ce fichier est le SEUL à être loadé dans le index.js */
 

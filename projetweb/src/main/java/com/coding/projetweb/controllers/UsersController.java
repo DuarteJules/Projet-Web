@@ -6,6 +6,7 @@ import java.util.List;
 import com.coding.models.User;
 import com.coding.services.UserDAO;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,11 @@ public class UsersController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable(value="id") int userId) throws SQLException{
         return dao.getUserById(userId);
+    }
+
+    @GetMapping("/?{username}&{password}")
+    public User getUserByInfo(@PathVariable (value="username") String username, @PathVariable(value="password") String password)throws SQLException{
+        return dao.getUserByInfo(username, password);
     }
 
     @PostMapping("")
