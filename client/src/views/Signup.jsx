@@ -16,8 +16,8 @@ const Signup =()=>{
                 <label htmlFor="psw">Mot de passe</label>
                 <input type="text" placeholder="entrez votre mot de passe" className="psw" alue={emailform.password} onChange={e => setEmailForm(value=>({...value,password:e.target.value}))} required/>
 
-                <div class="btnContainer">
-                    <button type="submit" class="signupBtn">S'inscrire</button>
+                <div className="btnContainer">
+                    <button type="submit" className="signupBtn">S'inscrire</button>
                 </div>
         </div>
     </form>

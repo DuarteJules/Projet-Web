@@ -1,23 +1,8 @@
 @import "./components/example.css";
 @import "./views/example.css";
+@import "./components/searchbar.css";
+@import "./views/recette.css"
+
 
 /* ^importer tout les AUTRES fichiers css dans celui ci, ce fichier est le SEUL à être loadé dans le index.js */
 
-.recipeCard{
-    display:flex;
-    background-color: purple;
-    /* flex-direction: column; */
-    max-width: 23%;
-}
-.recipeText{
-    font-size: 20px;
-    display:inline;
-    min-width: 183px;
-    max-width: 183px;
-}
-.image{
-    max-width: fit-content;
-}
-.rick{
-    max-width: 328px;
-}

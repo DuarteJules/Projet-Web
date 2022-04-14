@@ -6,6 +6,7 @@ import HomeCook from "./views/HomeCook";
 import Login from "./views/Login";
 import Layout from "./components/Layout";
 import Signup from "./views/Signup";
+import Profil from "./views/Profil";
 
 
 
@@ -20,10 +21,10 @@ const App = () => (
             <Route path="/login" element={<Login/>}/>
             <Route path="/homecook" element={<HomeCook/>}/>
             <Route path="/signup" element={<Signup/>}/>
+            <Route path="/profil" element={<Profil/>}/>
         </Switch>
     </Layout>
 </Router>
-)
-
+);
 
 export default App;

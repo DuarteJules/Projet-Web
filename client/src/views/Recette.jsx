@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import rick from "../assets/img/rick.jpg";
 import instance from "../functions/axios";
 
-const getUser = async () => {
-    const response = await instance.get('/users')
+const getRecipe = async () => {
+    const response = await instance.get('/recipes/1')
     .then(res => {return res.data})
     .catch((err) => console.log(err));
 
@@ -11,40 +11,49 @@ const getUser = async () => {
 }
 
 const Recette = () => {
-    const [user, setUser] = useState({});
+    const [Recipe, setRecipe] = useState({});
     const loading = useRef(true);
 
     useEffect(() => {
         if(loading.current) {
             (async () => {
-                const users = await getUser();
-                setUser(preVal => preVal = users);
+                const Recipes = await getRecipe();
+                setRecipe(preVal => preVal = Recipes);
                 loading.current = false;
             })();
         }
     }, []);
 
-    const testRender = (users, key = 0) => (
-        users.map(user => {
-            return (
-                <div key={key++}>
-                    <span>{user.username}</span>
-                    <br/>
-                    <span>{user.password}</span>
-                    <br/>
-                </div>
-            )
-        })
-    )
+    // const testRender = (Recipes, key = 0) => (
+    //     Recipes.map(Recipe => {
+    //         return (
+    //             <div key={key++}>
+    //                 <span>{Recipe.Recipename}</span>
+    //                 <br/>
+    //                 <span>{Recipe.password}</span>
+    //                 <br/>
+    //             </div>
+    //         )
+    //     })
+    // )
+
+    // console.log(Recipe);
+    // console.log(Recipe.title);
 
     return (
         <>
-            <h1>Ma page Recette</h1>
             <div className="recipeCard">
+                <div className="titleRecipe"><h1>{Recipe.title}</h1></div>
+                <div className="infoRecipes">
+                    <div className="timeRecipe">Temps nécessaire à la préparation : {Recipe.time} min</div>
+                    <div className="servingRecipe">Préparation pour : {Recipe.servings} personnes</div>
+                </div>
                 <div className="elementContainer">
-                    <div className="image"><img src={rick} alt="rick astley" className="rick"></img></div>
-                    <div className="recipeText"> <p>goudron gravier et emincé de ciment</p> </div>
-                    {!loading.current && testRender(user)}
+                    <div className="recipeText"> <p>{Recipe.content}</p></div>
+                    <div className="ingredientRecipe">{Recipe.ingredients}</div>
+                </div>
+                <div className="dateRecipe">
+                    <p>{Recipe.date}</p>
                 </div>
             </div>
         </>
