@@ -32,6 +32,11 @@ public class RecipesController {
         return dao.getRecipeById(recipeId);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Recipe> getRecipeByUserId(@PathVariable(value="id") int userId) throws SQLException{
+        return dao.getRecipeByUserId(userId);
+    }
+
     @PostMapping("")
     public void createRecipe(@RequestBody Recipe recipe) throws SQLException{
         dao.addRecipe(recipe);
