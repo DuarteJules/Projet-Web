@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import instance from "../functions/axios";
-
-const getRecipe = async () => {
-    const response = await instance.get('/recipes/1')
-    .then(res => {return res.data})
-    .catch((err) => console.log(err));
-
-    return response;
-}
+import { useParams } from "react-router-dom";
 
 const Recette = () => {
     const [Recipe, setRecipe] = useState({});
     const loading = useRef(true);
+    const params = useParams();
+
+    const getRecipe = async () => {
+        const response = await instance.get(`/recipes/${params.id}`)
+        .then(res => {return res.data})
+        .catch((err) => console.log(err));
+    
+        return response;
+    }
 
     useEffect(() => {
         if(loading.current) {

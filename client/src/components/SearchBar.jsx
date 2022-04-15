@@ -1,5 +1,6 @@
 import React, { useState,useRef,useEffect } from 'react';
 import instance from "../functions/axios";
+import { Link } from "react-router-dom";
 
 
 const getRecipe = async () => {
@@ -20,6 +21,7 @@ const getRecipe = async () => {
 
 
 function SearchBar() {
+
     const [Recipe, setRecipe] = useState({});
 
     // the value of the search field 
@@ -69,6 +71,9 @@ function SearchBar() {
         setIngredients(keyword);
     };
     // console.log(foundRecipes.length);
+
+    const handler = (index) =>{
+    }
     return (
     <div className="container">
         <input
@@ -78,12 +83,14 @@ function SearchBar() {
         className="input"
         placeholder="Entrez un ingrédient"
         />
+        
 
 <div className="recettesContainer">
             {!loading.current|| foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
-                <div className="RecetteCardContainer" key={recette.idRecipe} >
+                <Link to={`/Recette/${recette.idRecipe}`} className='RecetteCardContainer' key={recette.idRecipe} >
+                <div >
                     <div className="imageContainer">
-                        <img src={recette.image} />
+                        <img src={recette.image}/>
                     </div>
                     <div className="infoRecipeCard">
                         <p>{recette.title}</p>
@@ -93,8 +100,8 @@ function SearchBar() {
                         <p>type : {recette.type}</p>
                         <p>posté le {recette.date}</p>
                     </div>
-
                 </div>
+                </Link>
             ))
             ) : (
             <h1>No results found!</h1>

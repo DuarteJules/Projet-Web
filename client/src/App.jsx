@@ -21,7 +21,7 @@ const App = () => {
             <Layout user={user} setUser={setUser}>
                 <Switch>
                     <Route path="/home" element={<Home/>}/>
-                    <Route path="/recette" element={<Recette />}/>
+                    <Route path="/recette/:id" element={<Recette/>}/>
                     <Route path="*" element={<Error/>}/>
                     <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
                     <Route path="/homecook" element={<HomeCook/>}/>
