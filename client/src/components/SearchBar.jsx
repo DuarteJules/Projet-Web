@@ -51,8 +51,7 @@ function SearchBar() {
     };
     // console.log(foundRecipes.length);
 
-    const handler = (index) =>{
-    }
+console.log(foundRecipes)
     return (
     <div className="container">
         <input
@@ -69,7 +68,7 @@ function SearchBar() {
                 <Link to={`/Recette/${recette.idRecipe}`} className='RecetteCardContainer' key={recette.idRecipe} >
                 <div >
                     <div className="imageContainer">
-                        <img data-src={{uri:recette.linkImg}}/>
+                        <img src={recette.linkImg}/>
                     </div>
                     <div className="infoRecipeCard">
                         <p>{recette.title}</p>
@@ -89,6 +88,5 @@ function SearchBar() {
         </div>
         );
 }
-
 
 export default SearchBar;
