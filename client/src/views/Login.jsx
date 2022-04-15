@@ -61,28 +61,37 @@ const Login = ({user,setUser}) => {
     );
 
     const renderForm = (
-        <div className="form">
+        <div className="screen">
+            <div className="form">
           <form onSubmit={(e)=>verifCredential(e)}>
             <div className="input-container">
-              <label>Username </label>
-              <input type="text" name="uname" required />
+              <input type="text" name="uname" required class="login-input" placeholder="Nom d'utilisateur"/>
             </div>
             <div className="input-container">
-              <label>Password </label>
-              <input type="password" name="pass" required />
+              <input type="password" name="pass" required class="login-input" placeholder="Mot de passe"/>
             </div>
             <div className="button-container">
-              <input type="submit"/>
+            <button class="button login__submit">
+					<span class="button__text">Se Connecter</span>
+					<i class="button__icon"></i>
+			</button>	
             </div>
             {renderErrorMessage("error")}
           </form>
+            </div>
+            <div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>
         </div>
     );
 
     return (
         <div className="app">
           <div className="login-form">
-            <div className="title">Sign In</div>
+            {/* <div className="title">Sign In</div> */}
             {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
           </div>
         </div>
