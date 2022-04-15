@@ -20,7 +20,8 @@
 }
 .RecetteCardContainer{
     width:22%;
-    background-color: #9DBFAF;
+    background: rgb(247,163,163);
+    background: linear-gradient(355deg, rgba(250,220,193,1) 0%, rgba(250,212,194,1) 45%, rgba(254,174,136,1) 100%);
     margin: 10px;
     border-radius: 9px;
     box-shadow: -5px 5px 5px #c1c2c1;
@@ -29,9 +30,9 @@
     max-width:100%;
     
 }
-.infoRecipeCard{
+/* .infoRecipeCard{
     background-color: #9DBFAF;
-}
+} */
 .infoRecipeCard p{
     text-align:center;
 margin: 10px;

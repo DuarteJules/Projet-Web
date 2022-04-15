@@ -7,6 +7,13 @@
 
 /* ^importer tout les AUTRES fichiers css dans celui ci, ce fichier est le SEUL à être loadé dans le index.js */
 
+@font-face {
+    font-family:"JosefineSansRegular" ;
+    src: url("fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
 main{
     background-color: rgb(252, 228, 208);
+}
+*{
+    font-family: "JosefineSansRegular";
 }
