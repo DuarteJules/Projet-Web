@@ -13,6 +13,7 @@ const Profil = ({setRecetteId}) => {
     var formChange = useRef(false);
     var idRecette = useRef()
 
+
     const [recipeform, setRecipeForm] = useState({
         title:"",ingredients:"",content:"",type:"",time:"",
         servings:"",tag:"",link:""
@@ -39,24 +40,17 @@ const Profil = ({setRecetteId}) => {
         }, []);
 
     const changeRecipe = (indexRecipe) =>{
-        formChange = true
+        formChange.current = true
         idRecette = indexRecipe
         setRecetteId = indexRecipe
+        console.log(formChange.current)
     }
-
-    function changeForm(){
-        let formulaire = document.querySelector(".form");
-        let formulaireUpdate = document.querySelector(".formUpdate")
-        formulaire.style.display = 'none';
-        formulaireUpdate.style.display = 'contents';
-
-    }
-    
 
     const deleteRecipe = (indexRecipe) =>{
         instance.delete(`/recipes/${indexRecipe}`)
         setTimeout(window.location.reload(),1000)
     }
+
 
     return(
         <>
@@ -102,9 +96,7 @@ const Profil = ({setRecetteId}) => {
                 </div>
             </form>
         </div>
-        <div>
-            {formChange && <Form idRecipe={idRecette}/>}
-        </div>
+        
         <div className="recettesContainer">
         {!loading.current|| foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
             <div className='RecetteCardContainer' key={recette.idRecipe}>
@@ -120,11 +112,14 @@ const Profil = ({setRecetteId}) => {
                     <p>posté le {recette.date}</p>
                 </div>
                 <button className="BtnDelForm" onClick={() => deleteRecipe(recette.idRecipe)}>Supprimer</button>
-                <button className="BtnUpdateForm" onClick={() => changeRecipe(recette.idRecipe),()=> changeForm()}>Modifier</button>
+                <button className="BtnUpdateForm" onClick={() => changeRecipe(recette.idRecipe)}>Modifier</button>
             </div>
 
         ))
         ) : ("")}
+    </div>
+    <div>
+        {!formChange.current && <Form idRecipe={idRecette}/>}
     </div>
     </>
         

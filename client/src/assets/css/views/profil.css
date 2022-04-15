@@ -22,3 +22,7 @@
     align-self: center;
 }
 
+.noform{
+    display: none;
+}
+
