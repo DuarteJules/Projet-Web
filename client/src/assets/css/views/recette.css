@@ -1,12 +1,15 @@
 .recipeCard{
     display:flex;
     flex-direction: column;
-    width: 90%;
+    width: 70%;
     border-radius: 24px;
     background: #f0f0f0;
     box-shadow: -19px 19px 38px #b6b6b6,
                 19px -19px 38px #ffffff;
-    margin:5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 .image{
     max-width: fit-content;

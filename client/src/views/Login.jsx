@@ -66,25 +66,25 @@ const Login = ({user,setUser}) => {
             <div className="form">
           <form onSubmit={(e)=>verifCredential(e)}>
             <div className="input-container">
-              <input type="text" name="uname" required class="login-input" placeholder="Nom d'utilisateur"/>
+              <input type="text" name="uname" required className="login-input" placeholder="Nom d'utilisateur"/>
             </div>
             <div className="input-container">
-              <input type="password" name="pass" required class="login-input" placeholder="Mot de passe"/>
+              <input type="password" name="pass" required className="login-input" placeholder="Mot de passe"/>
             </div>
             <div className="button-container">
-            <button class="button login__submit">
-					<span class="button__text">Se Connecter</span>
-					<i class="button__icon"></i>
+            <button className="button login__submit">
+					<span className="button__text">Se Connecter</span>
+					<i className="button__icon"></i>
 			</button>	
             </div>
             {renderErrorMessage("error")}
           </form>
             </div>
-            <div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
+            <div className="screen__background">
+			<span className="screen__background__shape screen__background__shape4"></span>
+			<span className="screen__background__shape screen__background__shape3"></span>		
+			<span className="screen__background__shape screen__background__shape2"></span>
+			<span className="screen__background__shape screen__background__shape1"></span>
 		</div>
         </div>
     );
