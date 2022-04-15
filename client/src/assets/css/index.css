@@ -4,6 +4,7 @@
 @import "./views/recette.css";
 @import "./views/login.css";
 @import "components/header.css";
+@import "views/signup.css";
 
 /* ^importer tout les AUTRES fichiers css dans celui ci, ce fichier est le SEUL à être loadé dans le index.js */
 

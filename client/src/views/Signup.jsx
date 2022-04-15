@@ -5,22 +5,31 @@ const Signup =()=>{
     const [emailform, setEmailForm] = useState({username:"", password:""})
 
     return(
-    <form onSubmit={(e) => {addUser(emailform,e.preventDefault()); setEmailForm(value=>value={username:"", password:""})}}>
-        <div>
-            <h1>Inscrivez Vous!</h1>
-                <p>Remplisser ce formulaire pour créer un compte et poster vos propres recettes.</p>
-
-                <label htmlFor="username">Nom d'Utilisateur</label>
-                <input type="text" placeholder="entrez votre nom d'utilisateur" className="username" value={emailform.username} onChange={e => setEmailForm(value=>({...value,username:e.target.value}))} required/>
-
-                <label htmlFor="psw">Mot de passe</label>
-                <input type="text" placeholder="entrez votre mot de passe" className="psw" alue={emailform.password} onChange={e => setEmailForm(value=>({...value,password:e.target.value}))} required/>
-
-                <div className="btnContainer">
-                    <button type="submit" className="signupBtn">S'inscrire</button>
+<div className="signup-form">
+    <div className="screen">
+        <form class="form" onSubmit={(e) => {addUser(emailform,e); setEmailForm(value=>value={username:"", password:""})}}>
+            <div>
+                <div className="input-container">
+                    <input type="text" placeholder="Créez nom d'utilisateur" className="signup-input" value={emailform.username} onChange={e => setEmailForm(value=>({...value,username:e.target.value}))} required/>
                 </div>
-        </div>
-    </form>
+                <div className="input-container">
+                    <input type="text" placeholder="Créez votre mot de passe" className="signup-input" alue={emailform.password} onChange={e => setEmailForm(value=>({...value,password:e.target.value}))} required/>
+                </div>
+                    <div className="button-container">
+                    <button class="button signup__submit">
+                        <span class="button__text">S'Inscrire</span>
+                    </button>	
+                    </div>
+            </div>
+        </form>
+        <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+    </div>
+</div>
     );
 }
     
