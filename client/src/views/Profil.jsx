@@ -1,13 +1,49 @@
 import { useState } from "react";
 import { addRecipe } from "../functions/submitRecipe";
+import instance from "../functions/axios";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
-const Profil = () => {
+
+const Profil = ({user}) => {
+    const [foundRecipes, setFoundRecipes] = useState({});
+    const loading = useRef(true)
+
     const [recipeform, setRecipeForm] = useState({
         title:"",ingredients:"",content:"",type:"",time:"",
         servings:"",tag:"",link:""
     })
 
+    const getRecipeByUserId = async () => {
+        const response = await instance.get(`/recipes/user/${user.idUser}`)
+        .then(res => {return res.data},)
+        .catch((err) => console.log(err));
+    
+        // console.log(response);
+        return response;
+    }
+
+    useEffect(() => { 
+        if(loading.current) {
+            (async () => {
+                const Recipes = await getRecipeByUserId();
+                setFoundRecipes(preVal=> preVal = Recipes);
+                loading.current = false;
+            })();
+        }
+        }, []);
+
+    const changeRecipe = () =>{
+
+    }
+
+    const deleteRecipe = () =>{
+        instance.delete
+    }
+
     return(
+        <>
         <div className="form">
             <p>Creez votre recette</p>
             <form onSubmit={(e) => {addRecipe(recipeform, e.preventDefault())
@@ -50,6 +86,29 @@ const Profil = () => {
                 </div>
             </form>
         </div>
+        <div className="recettesContainer">
+        {!loading.current|| foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
+            <div className='RecetteCardContainer' key={recette.idRecipe}>
+                <div className="imageContainer">
+                    <img src={recette.image}/>
+                </div>
+                <div className="infoRecipeCard">
+                    <p>{recette.title}</p>
+                    <p>préparation : {recette.time} minutes</p>
+                    <p>ingrédients : {recette.ingredients}</p>
+                    <p>pour {recette.servings} personnes</p>
+                    <p>type : {recette.type}</p>
+                    <p>posté le {recette.date}</p>
+                </div>
+                <button onClick={() => deleteRecipe()}>Supprimer</button>
+                <button onClick={() => changeRecipe()}>Modifier</button>
+            </div>
+
+        ))
+        ) : ("")}
+    </div>
+    </>
+        
     );
 
 }

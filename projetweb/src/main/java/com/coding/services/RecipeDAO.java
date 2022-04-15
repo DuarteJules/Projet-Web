@@ -62,6 +62,31 @@ public class RecipeDAO {
             }
         }
     }
+    public List<Recipe> getRecipeByUserId(int id) throws SQLException {
+        try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
+            String sql = "SELECT * FROM recipes where idUser=?;";
+            try (PreparedStatement st = co.prepareStatement(sql)) {
+                st.setInt(1, id);
+                try (ResultSet rs = st.executeQuery()) {
+                    List<Recipe> list = new ArrayList<>();
+                    while (rs.next()) {
+                        Recipe r = new Recipe();
+                        r.setIdRecipe(rs.getInt("idRecipe"));
+                        r.setIdUser(rs.getInt("idUser"));
+                        r.setDate(rs.getString("date"));
+                        r.setIngredients(rs.getString("ingredients"));
+                        r.setTitle(rs.getString("title"));
+                        r.setContent(rs.getString("content"));
+                        r.setType(rs.getString("type"));
+                        r.setTime(rs.getInt("time"));
+                        r.setServings(rs.getInt("servings"));
+                        list.add(r);
+                    }
+                    return list;
+                }
+            }
+        }
+    }
 
     public void addRecipe(Recipe recipe) throws SQLException {
         try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {

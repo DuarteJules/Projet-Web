@@ -26,7 +26,7 @@ const App = () => {
                     <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
                     <Route path="/homecook" element={<HomeCook/>}/>
                     <Route path="/signup" element={<Signup/>}/>
-                    <Route path="/profil" element={<Profil/>}/>
+                    <Route path="/profil" element={<Profil user={user}/>}/>
                 </Switch>
             </Layout>
         </Router>
