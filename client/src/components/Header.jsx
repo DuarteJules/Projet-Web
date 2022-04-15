@@ -5,6 +5,8 @@ import Login from "../views/Login";
 
 
 const Header = ({user, setUser}) => {
+    const userid = localStorage.getItem('user');
+    const users = user;
     return(
         <header id="HeaderContainer">
             <div id={"logo"}>
@@ -13,16 +15,16 @@ const Header = ({user, setUser}) => {
             <nav id="navbar">
                 <ul id="linkContainer">
                     <p><Link to="/home">Les Recettes</Link></p>
-                    {!user && 
+                    {userid === 'false' && 
                     <>
                     <p><Link to="/login">Se Connecter</Link></p>
                     <p><Link to="/signup">S'inscrire</Link></p>
                     </>
                     }
-                    {user && 
+                    {userid !== 'false'&& 
                     <>
                     <li><Link to="/profil">Mon Profil</Link></li>
-                    <li onClick={()=>{setUser(false)}}><Link to="/home">Logout</Link></li>
+                    <li onClick={()=>{setUser(false); localStorage.setItem('user', false)}}><Link to="/home">Logout</Link></li>
                     </>
                     }
                 </ul>

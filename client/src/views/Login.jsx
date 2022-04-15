@@ -24,37 +24,14 @@ const Login = ({user,setUser}) => {
                 setErrorMessages({ name: "error", message: "l'un des champs est invalide" });
             }
             else{
-                console.log(currentUser);
                 setUser(preVal => preVal = status.data)
                 setIsSubmitted(true);
+                localStorage.setItem('user', status.data.idUser)
             }
         }
     }
 
 
-    const handleSubmit = (event) => {
-        //Prevent page reload
-        event.preventDefault();
-      
-        var { uname, pass } = document.forms[0];
-        
-        // Find user login info
-        const userData = user.find(user => user.username === uname.value);
-        console.log(userData);
-        // Compare user info
-        if (userData) {
-          if (userData.password !== pass.value) {
-            // Invalid password
-            setErrorMessages({ name: "pass", message: errors.pass });
-          } else {
-            setIsSubmitted(true);
-            changeUser(userData.id);
-          }
-        } else {
-          // Username not found
-          setErrorMessages({ name: "uname", message: errors.uname });
-        }
-      };
 
     const renderErrorMessage = (name) =>
     name === errorMessages.name && (

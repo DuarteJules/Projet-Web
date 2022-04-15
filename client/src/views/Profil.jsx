@@ -3,20 +3,21 @@ import { addRecipe } from "../functions/submitRecipe";
 import instance from "../functions/axios";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 
 
 const Profil = ({user}) => {
     const [foundRecipes, setFoundRecipes] = useState({});
     const loading = useRef(true)
+    const userid = localStorage.getItem('user')
 
     const [recipeform, setRecipeForm] = useState({
         title:"",ingredients:"",content:"",type:"",time:"",
         servings:"",tag:"",link:""
     })
 
+
     const getRecipeByUserId = async () => {
-        const response = await instance.get(`/recipes/user/${user.idUser}`)
+        const response = await instance.get(`/recipes/user/${userid}`)
         .then(res => {return res.data},)
         .catch((err) => console.log(err));
     
@@ -38,8 +39,9 @@ const Profil = ({user}) => {
 
     }
 
-    const deleteRecipe = () =>{
-        instance.delete
+    const deleteRecipe = (indexRecipe) =>{
+        instance.delete(`/recipes/${indexRecipe}`)
+        setTimeout(window.location.reload(),100)
     }
 
     return(
@@ -100,8 +102,8 @@ const Profil = ({user}) => {
                     <p>type : {recette.type}</p>
                     <p>posté le {recette.date}</p>
                 </div>
-                <button onClick={() => deleteRecipe()}>Supprimer</button>
-                <button onClick={() => changeRecipe()}>Modifier</button>
+                <button onClick={() => deleteRecipe(recette.idRecipe)}>Supprimer</button>
+                <button onClick={() => changeRecipe(recette.idRecipe)}>Modifier</button>
             </div>
 
         ))
