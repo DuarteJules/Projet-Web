@@ -14,6 +14,8 @@
 }
 main{
     background-color: rgb(252, 228, 208);
+    min-height: 100vh;
+    overflow: hidden;
 }
 *{
     font-family: "JosefineSansRegular";

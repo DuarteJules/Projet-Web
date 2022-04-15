@@ -15,11 +15,12 @@
 }
 .container{
     margin-bottom: 20px;
+    overflow:hidden;
+
 }
 .recettesContainer{
     display:flex;
     flex-wrap: wrap;
-
 }
 .RecetteCardContainer{
     animation: 0.5s ease-in-out  slideLeft;
