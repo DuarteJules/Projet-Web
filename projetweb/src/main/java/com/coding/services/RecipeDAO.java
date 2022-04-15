@@ -109,17 +109,17 @@ public class RecipeDAO {
 
     public void updateRecipe(int id, Recipe recipe) throws SQLException {
         try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
-            String sql = "UPDATE recipes SET idUser=? , idRecipe=? , date=? , ingredients=? , title=? , content=? , type=? , time=? , servings=? , WHERE idRecipe=?;";
+            String sql = "UPDATE recipes SET date=? , ingredients=? , title=? , content=? , type=? , time=? , servings=? , tag=?, linkImg=?, WHERE idRecipe=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
-                st.setInt(1, recipe.getIdUser());
-                st.setInt(2, recipe.getIdRecipe());
-                st.setString(3, recipe.getDate());
-                st.setString(4, recipe.getIngredients());
-                st.setString(5, recipe.getTitle());
-                st.setString(6, recipe.getContent());
-                st.setString(7, recipe.getType());
-                st.setInt(8, recipe.getTime());
-                st.setInt(9, recipe.getServings());
+                st.setString(1, recipe.getDate());
+                st.setString(2, recipe.getIngredients());
+                st.setString(3, recipe.getTitle());
+                st.setString(4, recipe.getContent());
+                st.setString(5, recipe.getType());
+                st.setInt(6, recipe.getTime());
+                st.setInt(7, recipe.getServings());
+                st.setString(8, recipe.getTag());
+                st.setString(9, recipe.getLinkImg());
                 st.setInt(10, id);
                 st.execute();
             }
