@@ -8,7 +8,6 @@ const getRecipe = async () => {
     .then(res => {return res.data},)
     .catch((err) => console.log(err));
 
-    // console.log(response);
     return response;
 }
 
@@ -49,9 +48,7 @@ function SearchBar() {
         }
         setIngredients(keyword);
     };
-    // console.log(foundRecipes.length);
 
-console.log(foundRecipes)
     return (
     <div className="container">
         <input

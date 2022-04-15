@@ -49,6 +49,7 @@ public class RecipesController {
 
     @DeleteMapping("/{id}")
     public void deleteRecipe(@PathVariable(value="id") int recipeId) throws SQLException{
+
         dao.deleteRecipe(recipeId);
     }
 }

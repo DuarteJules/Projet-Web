@@ -128,7 +128,7 @@ public class RecipeDAO {
 
     public void deleteRecipe(int id) throws SQLException {
         try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
-            String sql = "DELETE FROM recipes WHERE id=?;";
+            String sql = "DELETE FROM recipes WHERE idRecipe=?;";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, id);
                 st.execute();
