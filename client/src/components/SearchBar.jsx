@@ -7,7 +7,7 @@ const getRecipe = async () => {
     .then(res => {return res.data},)
     .catch((err) => console.log(err));
 
-    console.log(response);
+    // console.log(response);
     return response;
 }
     // const RECETTES=[
@@ -40,6 +40,7 @@ function SearchBar() {
             (async () => {
                 const Recipes = await getRecipe();
                 setRecipe(preVal => preVal = Recipes);
+                setFoundRecipes(preVal=> preVal = Recipes);
                 loading.current = false;
             })();
         }
@@ -51,7 +52,7 @@ function SearchBar() {
 
 //   // the search result
 //     const [foundRecipes, setFoundRecipes] = useState(Recipe);
-    console.log(Recipe);
+    // console.log(Recipe);
 
     const filter = (e) => {
         const keyword = e.target.value;
@@ -67,7 +68,7 @@ function SearchBar() {
         }
         setIngredients(keyword);
     };
-    console.log(foundRecipes.length);
+    // console.log(foundRecipes.length);
     return (
     <div className="container">
         <input
@@ -79,7 +80,7 @@ function SearchBar() {
         />
 
 <div className="recettesContainer">
-            {foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
+            {!loading.current|| foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
                 <div className="RecetteCardContainer" key={recette.idRecipe} >
                     <div className="imageContainer">
                         <img src={recette.image} />
