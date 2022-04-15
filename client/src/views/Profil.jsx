@@ -3,12 +3,15 @@ import { addRecipe } from "../functions/submitRecipe";
 import instance from "../functions/axios";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { updateRecipe } from "../functions/updateRecipe";
+import Form from "../components/Formulaire";
 
-
-const Profil = ({user}) => {
+const Profil = ({setRecetteId}) => {
     const [foundRecipes, setFoundRecipes] = useState({});
     const loading = useRef(true)
     const userid = localStorage.getItem('user')
+    var formChange = useRef(false);
+    var idRecette = useRef()
 
     const [recipeform, setRecipeForm] = useState({
         title:"",ingredients:"",content:"",type:"",time:"",
@@ -35,9 +38,20 @@ const Profil = ({user}) => {
         }
         }, []);
 
-    const changeRecipe = () =>{
+    const changeRecipe = (indexRecipe) =>{
+        formChange = true
+        idRecette = indexRecipe
+        setRecetteId = indexRecipe
+    }
+
+    function changeForm(){
+        let formulaire = document.querySelector(".form");
+        let formulaireUpdate = document.querySelector(".formUpdate")
+        formulaire.style.display = 'none';
+        formulaireUpdate.style.display = 'contents';
 
     }
+    
 
     const deleteRecipe = (indexRecipe) =>{
         instance.delete(`/recipes/${indexRecipe}`)
@@ -88,11 +102,14 @@ const Profil = ({user}) => {
                 </div>
             </form>
         </div>
+        <div>
+            {formChange && <Form idRecipe={idRecette}/>}
+        </div>
         <div className="recettesContainer">
         {!loading.current|| foundRecipes && foundRecipes.length > 0 ? (foundRecipes.map((recette) => (
             <div className='RecetteCardContainer' key={recette.idRecipe}>
                 <div className="imageContainer">
-                    <img src={recette.image}/>
+                    <img src={recette.linkImg}/>
                 </div>
                 <div className="infoRecipeCard">
                     <p>{recette.title}</p>
@@ -102,8 +119,8 @@ const Profil = ({user}) => {
                     <p>type : {recette.type}</p>
                     <p>posté le {recette.date}</p>
                 </div>
-                <button onClick={() => deleteRecipe(recette.idRecipe)}>Supprimer</button>
-                <button onClick={() => changeRecipe(recette.idRecipe)}>Modifier</button>
+                <button className="BtnDelForm" onClick={() => deleteRecipe(recette.idRecipe)}>Supprimer</button>
+                <button className="BtnUpdateForm" onClick={() => changeRecipe(recette.idRecipe),()=> changeForm()}>Modifier</button>
             </div>
 
         ))

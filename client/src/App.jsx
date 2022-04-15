@@ -15,6 +15,7 @@ import { useState } from "react";
 const App = () => {
 
     const [user, setUser] = useState(false);
+    const [recetteId, setRecetteId] = useState({})
 
     return (
         <Router>
@@ -26,7 +27,7 @@ const App = () => {
                     <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
                     <Route path="/homecook" element={<HomeCook/>}/>
                     <Route path="/signup" element={<Signup/>}/>
-                    <Route path="/profil" element={<Profil user={user}/>}/>
+                    <Route path="/profil" element={<Profil setRecetteId={setRecetteId}/>}/>
                 </Switch>
             </Layout>
         </Router>
