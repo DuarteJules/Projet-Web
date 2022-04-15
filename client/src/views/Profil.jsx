@@ -41,7 +41,7 @@ const Profil = ({user}) => {
 
     const deleteRecipe = (indexRecipe) =>{
         instance.delete(`/recipes/${indexRecipe}`)
-        setTimeout(window.location.reload(),100)
+        setTimeout(window.location.reload(),1000)
     }
 
     return(

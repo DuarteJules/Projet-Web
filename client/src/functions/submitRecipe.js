@@ -5,9 +5,10 @@ var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
 export async function addRecipe(body){
-
+  const idUser = localStorage.getItem('user')
+  console.log(idUser)
     instance.post('/recipes', {
-        idUser: "1"      /*|||METTRE L ID DE L USER|||*/,
+        idUser: `${idUser}`    /*|||METTRE L ID DE L USER|||*/,
         date: date,
         ingredients: body.ingredients,
         title: body.title,
@@ -24,4 +25,5 @@ export async function addRecipe(body){
       .catch(function (error) {
         //console.log(error);
       });
+  setTimeout(window.location.reload(),1000);
 }
