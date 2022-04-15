@@ -29,6 +29,7 @@ public class RecipeDAO {
                         r.setType(rs.getString("type"));
                         r.setTime(rs.getInt("time"));
                         r.setServings(rs.getInt("servings"));
+                        r.setLinkImg(rs.getString("linkImg"));
                         list.add(r);
                     }
                     return list;
