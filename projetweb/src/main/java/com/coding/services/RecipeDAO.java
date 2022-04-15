@@ -64,17 +64,18 @@ public class RecipeDAO {
 
     public void addRecipe(Recipe recipe) throws SQLException {
         try (Connection co = DriverManager.getConnection("jdbc:mysql://51.38.225.66:6033/recettes", "db_user", "402VFZPO1Jw06aaKjxit")) {
-            String sql = "INSERT INTO recipes (idUser, idRecipe, date, ingredients, title, content, type, time, servings) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO recipes (idUser, date, ingredients, title, content, type, time, servings, tag, linkImg) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             try (PreparedStatement st = co.prepareStatement(sql)) {
                 st.setInt(1, recipe.getIdUser());
-                st.setInt(2, recipe.getIdRecipe());
-                st.setString(3, recipe.getDate());
-                st.setString(4, recipe.getIngredients());
-                st.setString(5, recipe.getTitle());
-                st.setString(6, recipe.getContent());
-                st.setString(7, recipe.getType());
-                st.setInt(8, recipe.getTime());
-                st.setInt(9, recipe.getServings());
+                st.setString(2, recipe.getDate());
+                st.setString(3, recipe.getIngredients());
+                st.setString(4, recipe.getTitle());
+                st.setString(5, recipe.getContent());
+                st.setString(6, recipe.getType());
+                st.setInt(7, recipe.getTime());
+                st.setInt(8, recipe.getServings());
+                st.setString(9, recipe.getTag());
+                st.setString(10, recipe.getLinkImg());
                 st.execute();
             }
         }

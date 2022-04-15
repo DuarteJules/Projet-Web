@@ -13,9 +13,16 @@ public class Recipe {
     private int time;
     private int servings;
     private String tag;
+    private String linkImg;
 
     public int getIdRecipe() {
         return idRecipe;
+    }
+    public String getLinkImg() {
+        return linkImg;
+    }
+    public void setLinkImg(String linkImg) {
+        this.linkImg = linkImg;
     }
     public String getTag() {
         return tag;
