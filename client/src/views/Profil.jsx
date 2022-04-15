@@ -55,13 +55,13 @@ const Profil = ({setRecetteId}) => {
 
     const deleteRecipe = (indexRecipe) =>{
         instance.delete(`/recipes/${indexRecipe}`)
-        setTimeout(window.location.reload(),100)
+        setTimeout(window.location.reload(),1000)
     }
 
     return(
         <>
-        <div className="form">
-            <p>Creez votre recette</p>
+        <div className="formRecette">
+            <h1>Creez votre recette</h1>
             <form onSubmit={(e) => {addRecipe(recipeform, e.preventDefault())
             setRecipeForm(value => value={title:"",ingredients:"",content:"",type:"",time:"",
             servings:"",tag:"",link:""})}}>
@@ -75,7 +75,7 @@ const Profil = ({setRecetteId}) => {
                 </div>
                 <div className="input-container">
                     <label>Description et instructions : </label>
-                    <input type="text" className="content" value={recipeform.content} onChange={e => setRecipeForm(value=>({...value,content:e.target.value}))} required />
+                    <textarea type="text" className="content" value={recipeform.content} onChange={e => setRecipeForm(value=>({...value,content:e.target.value}))} required />
                 </div>
                 <div className="input-container">
                     <label>Categorie : </label>
