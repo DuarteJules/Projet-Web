@@ -5,7 +5,7 @@ const Signup =()=>{
     const [emailform, setEmailForm] = useState({username:"", password:""})
 
     return(
-    <form onSubmit={(e) => {addUser(emailform,e); setEmailForm(value=>value={username:"", password:""})}}>
+    <form onSubmit={(e) => {addUser(emailform,e.preventDefault()); setEmailForm(value=>value={username:"", password:""})}}>
         <div>
             <h1>Inscrivez Vous!</h1>
                 <p>Remplisser ce formulaire pour créer un compte et poster vos propres recettes.</p>

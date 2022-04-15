@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { changeUser } from "../functions/user";
+import currentUser, { changeUser } from "../functions/user";
 import instance from "../functions/axios";
 
 const Login = ({user,setUser}) => {
@@ -24,6 +24,7 @@ const Login = ({user,setUser}) => {
                 setErrorMessages({ name: "error", message: "l'un des champs est invalide" });
             }
             else{
+                console.log(currentUser);
                 setUser(preVal => preVal = status.data)
                 setIsSubmitted(true);
             }
